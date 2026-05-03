@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Primary Colors -->
+    <color name="primary">#6366F1</color>      <!-- Indigo - Main brand color -->
+    <color name="primary_dark">#4F46E5</color> <!-- Darker indigo -->
+    <color name="primary_light">#818CF8</color><!-- Lighter indigo -->
+    <color name="accent">#10B981</color>        <!-- Green for success/positive -->
+
+    <!-- Background Colors -->
+    <color name="background">#F8FAFC</color>    <!-- Light slate background -->
+    <color name="surface">#FFFFFF</color>       <!-- White surface -->
+    <color name="card_background">#FFFFFF</color>
+
+    <!-- Text Colors -->
+    <color name="text_primary">#1E293B</color>  <!-- Dark slate for main text -->
+    <color name="text_secondary">#64748B</color><!-- Medium slate for secondary -->
+    <color name="text_hint">#94A3B8</color>     <!-- Light slate for hints -->
+    <color name="text_white">#FFFFFF</color>
+
+    <!-- Status Colors -->
+    <color name="success">#10B981</color>       <!-- Green -->
+    <color name="warning">#F59E0B</color>       <!-- Amber -->
+    <color name="error">#EF4444</color>         <!-- Red -->
+    <color name="info">#3B82F6</color>          <!-- Blue -->
+
+    <!-- Progress Colors -->
+    <color name="progress_low">#10B981</color>   <!-- Green when under budget -->
+    <color name="progress_medium">#F59E0B</color><!-- Orange when approaching -->
+    <color name="progress_high">#EF4444</color>  <!-- Red when over budget -->
+
+    <!-- Category Colors for Charts -->
+    <color name="category_food">#6366F1</color>
+    <color name="category_transport">#3B82F6</color>
+    <color name="category_shopping">#EC4899</color>
+    <color name="category_entertainment">#8B5CF6</color>
+    <color name="category_bills">#EF4444</color>
+    <color name="category_healthcare">#10B981</color>
+</resources>
