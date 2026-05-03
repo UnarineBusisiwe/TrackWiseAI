@@ -1,4 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+    dialog_profile.xml - Profile Dialog Layout for TrackWise AI
+    
+    This dialog appears when user clicks "Profile" from the navigation drawer.
+    It displays user profile information and allows changing profile picture.
+    
+    Features:
+    - Circular profile image (using CircleImageView library)
+    - User name display
+    - Change profile photo button
+    - Cancel button
+-->
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
@@ -7,24 +20,30 @@
     android:padding="24dp"
     android:gravity="center">
 
+    <!-- ==================== PROFILE IMAGE ==================== -->
+    <!-- Circular Image View for profile picture -->
+    <!-- CircleImageView library creates perfect circle crop with border -->
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/ivProfileDialog"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:src="@drawable/ic_default_profile"
-        app:civ_border_width="3dp"
-        app:civ_border_color="@color/primary" />
+        android:src="@drawable/ic_default_profile"     <!-- Default image until user uploads -->
+        app:civ_border_width="3dp"                    <!-- 3dp border thickness -->
+        app:civ_border_color="@color/primary" />      <!-- Border uses primary brand color -->
 
+    <!-- ==================== USERNAME DISPLAY ==================== -->
     <TextView
         android:id="@+id/tvDialogUserName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="User Name"
+        android:text="User Name"                      <!-- Placeholder text -->
         android:textSize="20sp"
         android:textStyle="bold"
         android:textColor="@color/text_primary"
         android:layout_marginTop="16dp" />
 
+    <!-- ==================== CHANGE PHOTO BUTTON ==================== -->
+    <!-- Outlined button style (border only, no fill) -->
     <Button
         android:id="@+id/btnChangePhoto"
         android:layout_width="match_parent"
@@ -33,6 +52,8 @@
         android:layout_marginTop="24dp"
         style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
 
+    <!-- ==================== CANCEL BUTTON ==================== -->
+    <!-- Solid button to close dialog without changes -->
     <Button
         android:id="@+id/btnCancel"
         android:layout_width="match_parent"
