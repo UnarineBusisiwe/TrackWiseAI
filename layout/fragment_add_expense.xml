@@ -1,4 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+    fragment_add_expense.xml - Add Expense Screen for TrackWise AI
+    
+    This fragment allows users to add a new expense entry with:
+    - Amount, description, category, date, start/end times
+    - Optional photo attachment (receipt image)
+    
+    All fields are validated before saving to database.
+-->
+
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
@@ -11,6 +21,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+        <!-- ==================== PAGE TITLE ==================== -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -20,6 +31,8 @@
             android:textColor="@color/primary"
             android:layout_marginBottom="24dp" />
 
+        <!-- ==================== AMOUNT FIELD ==================== -->
+        <!-- Allows only numbers and decimal point -->
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -37,6 +50,7 @@
                 android:textColor="@color/text_primary" />
         </com.google.android.material.textfield.TextInputLayout>
 
+        <!-- ==================== DESCRIPTION FIELD ==================== -->
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -53,6 +67,8 @@
                 android:textColor="@color/text_primary" />
         </com.google.android.material.textfield.TextInputLayout>
 
+        <!-- ==================== CATEGORY FIELD ==================== -->
+        <!-- AutoCompleteTextView shows dropdown suggestions -->
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -66,10 +82,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Category"
-                android:inputType="none"
+                android:inputType="none"          <!-- No manual typing, uses dropdown -->
                 android:textColor="@color/text_primary" />
         </com.google.android.material.textfield.TextInputLayout>
 
+        <!-- ==================== DATE FIELD ==================== -->
+        <!-- focusable="false" prevents manual typing, triggers date picker -->
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -83,16 +101,19 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Date"
-                android:focusable="false"
+                android:focusable="false"        <!-- Opens date picker instead -->
                 android:textColor="@color/text_primary" />
         </com.google.android.material.textfield.TextInputLayout>
 
+        <!-- ==================== START TIME & END TIME ==================== -->
+        <!-- Horizontal layout puts both time fields side by side -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_marginBottom="16dp">
 
+            <!-- Start Time Field (Left) -->
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -107,10 +128,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Start Time"
-                    android:focusable="false"
+                    android:focusable="false"    <!-- Opens time picker -->
                     android:textColor="@color/text_primary" />
             </com.google.android.material.textfield.TextInputLayout>
 
+            <!-- End Time Field (Right) -->
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -125,12 +147,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="End Time"
-                    android:focusable="false"
+                    android:focusable="false"    <!-- Opens time picker -->
                     android:textColor="@color/text_primary" />
             </com.google.android.material.textfield.TextInputLayout>
 
         </LinearLayout>
 
+        <!-- ==================== PHOTO ATTACHMENT CARD ==================== -->
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -145,6 +168,7 @@
                 android:orientation="vertical"
                 android:padding="16dp">
 
+                <!-- Section Title -->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -153,6 +177,7 @@
                     android:textColor="@color/text_primary"
                     android:layout_marginBottom="12dp" />
 
+                <!-- Photo Preview ImageView -->
                 <ImageView
                     android:id="@+id/ivPhoto"
                     android:layout_width="match_parent"
@@ -162,6 +187,7 @@
                     android:src="@android:drawable/ic_menu_camera"
                     app:tint="@color/text_secondary" />
 
+                <!-- Take Photo Button -->
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnTakePhoto"
                     android:layout_width="match_parent"
@@ -176,6 +202,8 @@
 
         </com.google.android.material.card.MaterialCardView>
 
+        <!-- ==================== SAVE BUTTON ==================== -->
+        <!-- Primary action button - saves expense to database -->
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnSaveExpense"
             android:layout_width="match_parent"
