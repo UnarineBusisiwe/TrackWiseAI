@@ -1,24 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+    dialog_add_category.xml - Add Category Dialog for TrackWise AI
+    
+    This dialog appears when user wants to create a new expense category.
+    It contains a single input field for entering the category name.
+    
+    Categories help organize expenses (e.g., Food, Transport, Shopping, etc.)
+-->
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="wrap_content"          <!-- Height adjusts to content -->
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="16dp">                       <!-- 16dp padding around edges -->
 
+    <!-- Category Name Input Field -->
+    <!-- Material Design TextInputLayout with outlined box style -->
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        app:boxStrokeColor="@color/primary"
-        app:hintTextColor="@color/primary">
+        app:boxStrokeColor="@color/primary"       <!-- Border color when focused -->
+        app:hintTextColor="@color/primary">       <!-- Hint text color when focused -->
 
+        <!-- TextInputEditText - Actual input field -->
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etCategoryName"
+            android:id="@+id/etCategoryName"      <!-- ID to reference in code -->
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Category Name"
-            android:textColor="@color/text_primary" />
+            android:hint="Category Name"          <!-- Placeholder text -->
+            android:textColor="@color/text_primary" /> <!-- Text color -->
     </com.google.android.material.textfield.TextInputLayout>
 
 </LinearLayout>
