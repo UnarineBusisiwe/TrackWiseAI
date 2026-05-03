@@ -1,10 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!--
+    fragment_dashboard.xml - Dashboard Screen for TrackWise AI
+    
+    Displays:
+    - Budget progress card (percentage, amount spent, goals)
+    - Period selector (Today, Week, Month, etc.)
+    - List of recent transactions
+    - FAB button to quickly add expenses
+-->
+
+<androidx.coordinatorlayout.widget.CoordinatorLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background">
 
+    <!-- App Bar with Toolbar -->
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -20,6 +32,7 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
+    <!-- Main Content - Scrolls with the app bar -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -27,7 +40,8 @@
         android:padding="16dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <!-- Budget Progress Card -->
+        <!-- ==================== BUDGET PROGRESS CARD ==================== -->
+        <!-- Shows user's spending progress against monthly budget -->
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -42,6 +56,7 @@
                 android:orientation="vertical"
                 android:padding="20dp">
 
+                <!-- Card Title -->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -50,6 +65,7 @@
                     android:textStyle="bold"
                     android:textColor="@color/text_primary" />
 
+                <!-- Percentage Spent -->
                 <TextView
                     android:id="@+id/tvBudgetPercentage"
                     android:layout_width="wrap_content"
@@ -60,6 +76,7 @@
                     android:textColor="@color/primary"
                     android:layout_marginTop="8dp" />
 
+                <!-- Progress Bar -->
                 <com.google.android.material.progressindicator.LinearProgressIndicator
                     android:id="@+id/progressBudget"
                     android:layout_width="match_parent"
@@ -68,6 +85,7 @@
                     app:indicatorColor="@color/primary"
                     app:trackColor="@color/text_hint" />
 
+                <!-- Amount Spent -->
                 <TextView
                     android:id="@+id/tvSpentAmount"
                     android:layout_width="wrap_content"
@@ -77,6 +95,7 @@
                     android:textColor="@color/text_primary"
                     android:layout_marginTop="8dp" />
 
+                <!-- Budget Goal Range -->
                 <TextView
                     android:id="@+id/tvGoalRange"
                     android:layout_width="wrap_content"
@@ -89,7 +108,8 @@
 
         </com.google.android.material.card.MaterialCardView>
 
-        <!-- Period Selector -->
+        <!-- ==================== PERIOD SELECTOR ==================== -->
+        <!-- Allows user to filter transactions by date range -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -97,6 +117,7 @@
             android:gravity="center_vertical"
             android:layout_marginBottom="16dp">
 
+            <!-- Section Title -->
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -106,6 +127,7 @@
                 android:textStyle="bold"
                 android:textColor="@color/text_primary" />
 
+            <!-- Filter Button -->
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnSelectPeriod"
                 android:layout_width="wrap_content"
@@ -119,7 +141,8 @@
 
         </LinearLayout>
 
-        <!-- Recent Transactions List -->
+        <!-- ==================== TRANSACTIONS LIST ==================== -->
+        <!-- RecyclerView displays list of recent expenses -->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvRecentExpenses"
             android:layout_width="match_parent"
@@ -128,7 +151,8 @@
 
     </LinearLayout>
 
-    <!-- Floating Action Button -->
+    <!-- ==================== FLOATING ACTION BUTTON ==================== -->
+    <!-- Quick add expense button - floats at bottom right -->
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabAddExpense"
         android:layout_width="wrap_content"
