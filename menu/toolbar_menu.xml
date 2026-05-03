@@ -1,19 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+    toolbar_menu.xml - Toolbar Menu (3-dot Overflow Menu) for TrackWise AI
+    
+    This menu appears in the top app bar (toolbar) when user is logged in.
+    Items with app:showAsAction="ifRoom" appear as icons in the toolbar.
+    Items with "never" appear in the overflow menu (3 dots).
+    
+    Provides quick access to:
+    - Profile (view/edit user info)
+    - Set Budget (monthly spending goals)
+    - Logout (end session)
+-->
+
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <!-- ==================== PROFILE MENU ITEM ==================== -->
+    <!-- Opens profile dialog to view/edit user information and profile picture -->
+    <!-- "ifRoom" - Shows as icon in toolbar if space is available -->
     <item
         android:id="@+id/action_profile"
         android:title="Profile"
         android:icon="@android:drawable/ic_menu_gallery"
         app:showAsAction="ifRoom" />
 
+    <!-- ==================== SET BUDGET MENU ITEM ==================== -->
+    <!-- Opens dialog to set monthly minimum and maximum spending goals -->
+    <!-- "ifRoom" - Shows as icon in toolbar if space is available -->
     <item
         android:id="@+id/action_set_budget"
         android:title="Set Budget"
         android:icon="@android:drawable/ic_menu_edit"
         app:showAsAction="ifRoom" />
 
+    <!-- ==================== LOGOUT MENU ITEM ==================== -->
+    <!-- Ends user session and returns to login screen -->
+    <!-- "never" - Always appears in overflow menu (3 dots), never in toolbar -->
     <item
         android:id="@+id/action_logout"
         android:title="Logout"
