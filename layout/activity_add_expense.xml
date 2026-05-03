@@ -1,24 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+    fragment_add_expense.xml
+    Layout file for adding a new expense in TrackWise AI app.
+    
+    This layout contains:
+    - Input fields for expense amount, description, category, date, and time
+    - Photo capture section for attaching receipt images
+    - Save button to store the expense in the database
+    
+    Author: TrackWise AI Team
+    Version: 1.0
+-->
+
+<!-- 
+    ScrollView - Wraps the entire layout to allow scrolling
+    This is important because when the keyboard appears, the content
+    can scroll up so all fields remain visible to the user
+-->
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#F5F5F5"
-    android:padding="16dp">
+    android:layout_width="match_parent"          <!-- Takes full width of parent -->
+    android:layout_height="match_parent"         <!-- Takes full height of parent -->
+    android:background="#F5F5F5"                 <!-- Light gray background color -->
+    android:padding="16dp">                      <!-- 16dp padding around all edges -->
 
+    <!-- 
+        LinearLayout - Main container for all form fields
+        Orientation: Vertical - Stacks elements top to bottom
+    -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"     <!-- Height adjusts to content -->
+        android:orientation="vertical">           <!-- Children arranged vertically -->
 
+        <!-- 
+            Page Title
+            Displays "Add Expense" at the top of the screen
+        -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Add Expense"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:layout_marginBottom="24dp" />
+            android:text="Add Expense"            <!-- Title text -->
+            android:textSize="24sp"               <!-- 24sp font size -->
+            android:textStyle="bold"              <!-- Bold text style -->
+            android:layout_marginBottom="24dp" /> <!-- 24dp space below title -->
 
+        <!-- ============================================================ -->
+        <!-- AMOUNT INPUT FIELD                                            -->
+        <!-- ============================================================ -->
+        
+        <!-- 
+            TextInputLayout - Wrapper for EditText that provides Material Design styling
+            Features: Floating hint, error handling, animations
+        -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"  <!-- Outlined box style -->
+            android:layout_marginBottom="16dp">    <!-- 16dp space below this field -->
+
+            <!-- 
+                TextInputEditText - Input field for expense amount
+                android:hint - Shows "Amount (R)" as placeholder text
+                android:inputType="numberDecimal" - Restricts input to numbers with decimals
+            -->
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etAmount"        <!-- Unique ID to reference in code -->
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Amount (R)"          <!-- Hint shown when field is empty -->
+                android:inputType="numberDecimal" /> <!-- Only numbers and decimal point allowed -->
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- ============================================================ -->
+        <!-- DESCRIPTION INPUT FIELD                                       -->
+        <!-- ============================================================ -->
+        
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -26,40 +83,40 @@
             android:layout_marginBottom="16dp">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etAmount"
+                android:id="@+id/etDescription"   <!-- Unique ID for description field -->
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Amount (R)"
-                android:inputType="numberDecimal" />
+                android:hint="Description"         <!-- Hint: Description -->
+                android:maxLines="2" />            <!-- Limit to 2 lines of text -->
         </com.google.android.material.textfield.TextInputLayout>
 
+        <!-- ============================================================ -->
+        <!-- CATEGORY INPUT FIELD (AutoComplete)                           -->
+        <!-- ============================================================ -->
+        
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_marginBottom="16dp">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etDescription"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Description" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_marginBottom="16dp">
-
+            <!-- 
+                AutoCompleteTextView - Shows suggestions as user types
+                This field uses a dropdown to select from existing categories
+                android:inputType="none" - Prevents keyboard from appearing (uses dropdown instead)
+            -->
             <AutoCompleteTextView
-                android:id="@+id/etCategory"
+                android:id="@+id/etCategory"      <!-- Unique ID for category field -->
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Category"
-                android:inputType="none" />
+                android:hint="Category"            <!-- Hint: Category -->
+                android:inputType="none" />        <!-- No keyboard - uses dropdown selection -->
         </com.google.android.material.textfield.TextInputLayout>
 
+        <!-- ============================================================ -->
+        <!-- DATE INPUT FIELD                                              -->
+        <!-- ============================================================ -->
+        
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -67,100 +124,135 @@
             android:layout_marginBottom="16dp">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etDate"
+                android:id="@+id/etDate"          <!-- Unique ID for date field -->
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Date"
-                android:focusable="false"
-                android:inputType="none" />
+                android:hint="Date"               <!-- Hint: Date -->
+                android:focusable="false"         <!-- Prevents manual typing -->
+                android:inputType="none" />       <!-- Shows date picker instead of keyboard -->
         </com.google.android.material.textfield.TextInputLayout>
 
+        <!-- ============================================================ -->
+        <!-- START TIME & END TIME INPUT FIELDS (Horizontal Layout)        -->
+        <!-- ============================================================ -->
+        
+        <!-- 
+            LinearLayout - Horizontal container for start and end time fields
+            Places both fields side by side on the same row
+        -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginBottom="16dp">
+            android:orientation="horizontal"       <!-- Horizontal arrangement -->
+            android:layout_marginBottom="16dp">    <!-- 16dp space below container -->
 
+            <!-- START TIME FIELD (Left side - takes half width) -->
             <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="0dp"
+                android:layout_width="0dp"         <!-- 0dp with weight=1 takes half space -->
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="1"          <!-- Takes 50% of available width -->
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_marginEnd="8dp">
+                android:layout_marginEnd="8dp">    <!-- 8dp space to the right -->
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etStartTime"
+                    android:id="@+id/etStartTime" <!-- Unique ID for start time -->
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Start Time"
-                    android:focusable="false"
-                    android:inputType="none" />
+                    android:hint="Start Time"      <!-- Hint: Start Time -->
+                    android:focusable="false"      <!-- Prevents manual typing -->
+                    android:inputType="none" />    <!-- Shows time picker instead -->
             </com.google.android.material.textfield.TextInputLayout>
 
+            <!-- END TIME FIELD (Right side - takes half width) -->
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="1"          <!-- Takes 50% of available width -->
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_marginStart="8dp">
+                android:layout_marginStart="8dp">  <!-- 8dp space to the left -->
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etEndTime"
+                    android:id="@+id/etEndTime"   <!-- Unique ID for end time -->
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="End Time"
-                    android:focusable="false"
-                    android:inputType="none" />
+                    android:hint="End Time"        <!-- Hint: End Time -->
+                    android:focusable="false"      <!-- Prevents manual typing -->
+                    android:inputType="none" />    <!-- Shows time picker instead -->
             </com.google.android.material.textfield.TextInputLayout>
 
         </LinearLayout>
 
-        <!-- Photo Capture Section -->
+        <!-- ============================================================ -->
+        <!-- PHOTO CAPTURE SECTION (MaterialCardView)                      -->
+        <!-- ============================================================ -->
+        
+        <!-- 
+            MaterialCardView - Card-style container for photo capture section
+            Provides elevation (shadow) and rounded corners for better visual appearance
+        -->
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardCornerRadius="12dp"
-            app:cardElevation="2dp"
-            android:layout_marginBottom="16dp">
+            app:cardCornerRadius="12dp"           <!-- Rounded corners (12dp radius) -->
+            app:cardElevation="2dp"               <!-- Small shadow/elevation -->
+            android:layout_marginBottom="16dp">   <!-- 16dp space below card -->
 
+            <!-- Inner LinearLayout for card content -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="16dp">
+                android:padding="16dp">           <!-- 16dp padding inside the card -->
 
+                <!-- Section Title -->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Attach Photo"
-                    android:textStyle="bold"
-                    android:layout_marginBottom="12dp" />
+                    android:textStyle="bold"      <!-- Bold text -->
+                    android:layout_marginBottom="12dp" /> <!-- 12dp space below title -->
 
+                <!-- 
+                    ImageView - Displays the captured photo preview
+                    Initially shows gray background until photo is taken
+                -->
                 <ImageView
-                    android:id="@+id/ivPhoto"
+                    android:id="@+id/ivPhoto"     <!-- Unique ID for photo preview -->
                     android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    android:scaleType="centerCrop"
-                    android:background="#E0E0E0"
-                    android:layout_marginBottom="12dp" />
+                    android:layout_height="200dp"  <!-- Fixed height 200dp -->
+                    android:scaleType="centerCrop" <!-- Crops image to fill the view -->
+                    android:background="#E0E0E0"   <!-- Light gray background -->
+                    android:layout_marginBottom="12dp" /> <!-- 12dp space below image -->
 
+                <!-- 
+                    Take Photo Button
+                    Opens camera intent to capture a photo for the expense receipt
+                -->
                 <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btnTakePhoto"
+                    android:id="@+id/btnTakePhoto" <!-- Unique ID for camera button -->
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Take Photo"
-                    style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton" /> <!-- Outlined button style -->
 
             </LinearLayout>
 
         </com.google.android.material.card.MaterialCardView>
 
+        <!-- ============================================================ -->
+        <!-- SAVE EXPENSE BUTTON                                            -->
+        <!-- ============================================================ -->
+        
+        <!-- 
+            Save Expense Button - Primary action button
+            When clicked, saves all entered data to the database
+        -->
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnSaveExpense"
+            android:id="@+id/btnSaveExpense"     <!-- Unique ID for save button -->
             android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:text="Save Expense"
-            app:cornerRadius="12dp" />
+            android:layout_height="56dp"          <!-- Fixed height 56dp (Material Design recommended) -->
+            android:text="Save Expense"           <!-- Button text -->
+            app:cornerRadius="12dp" />            <!-- Rounded corners -->
 
     </LinearLayout>
 
