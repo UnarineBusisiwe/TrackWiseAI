@@ -1,4 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+    fragment_view_expense.xml - View Expenses Screen for TrackWise AI
+    
+    This fragment allows users to:
+    - View all expenses within a selected date range
+    - Filter expenses by start and end date
+    - Generate reports and share expense summaries
+    - View total spent, transaction count, and category breakdown
+    
+    Features:
+    - Summary card with totals
+    - Date range picker
+    - Export/Share report button
+    - Scrollable list of expenses
+-->
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
@@ -6,7 +22,8 @@
     android:orientation="vertical"
     android:background="@color/background">
 
-    <!-- Summary Card -->
+    <!-- ==================== SUMMARY CARD ==================== -->
+    <!-- Displays statistics: total spent, transaction count, categories used -->
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -21,6 +38,7 @@
             android:orientation="vertical"
             android:padding="16dp">
 
+            <!-- Card Title -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -29,12 +47,14 @@
                 android:textStyle="bold"
                 android:textColor="@color/text_primary" />
 
+            <!-- Three Statistics in Horizontal Row -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_marginTop="12dp">
 
+                <!-- Stat 1: Total Spent -->
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -60,6 +80,7 @@
 
                 </LinearLayout>
 
+                <!-- Stat 2: Transaction Count -->
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -85,6 +106,7 @@
 
                 </LinearLayout>
 
+                <!-- Stat 3: Categories Count -->
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -116,7 +138,8 @@
 
     </com.google.android.material.card.MaterialCardView>
 
-    <!-- Date Range Selector -->
+    <!-- ==================== DATE RANGE SELECTOR ==================== -->
+    <!-- Allows user to filter expenses by custom date range -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -125,6 +148,7 @@
         android:background="@color/surface"
         android:layout_marginBottom="8dp">
 
+        <!-- Section Title -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -134,12 +158,14 @@
             android:textColor="@color/text_primary"
             android:layout_marginBottom="12dp" />
 
+        <!-- Row: Start Date, "to", End Date, Filter Button -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center_vertical">
 
+            <!-- Start Date Button -->
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnStartDate"
                 android:layout_width="0dp"
@@ -152,6 +178,7 @@
                 app:strokeColor="@color/primary"
                 android:textColor="@color/primary" />
 
+            <!-- "to" Text -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -159,6 +186,7 @@
                 android:textColor="@color/text_primary"
                 android:layout_marginHorizontal="8dp" />
 
+            <!-- End Date Button -->
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnEndDate"
                 android:layout_width="0dp"
@@ -171,6 +199,7 @@
                 app:strokeColor="@color/primary"
                 android:textColor="@color/primary" />
 
+            <!-- Filter Button (Solid primary color) -->
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnFilter"
                 android:layout_width="wrap_content"
@@ -186,7 +215,8 @@
 
     </LinearLayout>
 
-    <!-- Export Button -->
+    <!-- ==================== GENERATE REPORT BUTTON ==================== -->
+    <!-- Exports/shares expense report -->
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnExportReport"
         android:layout_width="match_parent"
@@ -200,7 +230,8 @@
         android:textColor="@color/primary"
         app:iconTint="@color/primary" />
 
-    <!-- Progress Bar -->
+    <!-- ==================== LOADING PROGRESS BAR ==================== -->
+    <!-- Visible while loading data from database -->
     <ProgressBar
         android:id="@+id/progressBar"
         android:layout_width="wrap_content"
@@ -209,7 +240,8 @@
         android:layout_margin="32dp"
         android:visibility="gone" />
 
-    <!-- Empty State -->
+    <!-- ==================== EMPTY STATE MESSAGE ==================== -->
+    <!-- Shown when no expenses found in selected date range -->
     <TextView
         android:id="@+id/tvEmptyState"
         android:layout_width="wrap_content"
@@ -222,7 +254,8 @@
         android:textColor="@color/text_secondary"
         android:visibility="gone" />
 
-    <!-- Expenses List -->
+    <!-- ==================== EXPENSES LIST ==================== -->
+    <!-- RecyclerView displays scrollable list of expenses -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvExpenses"
         android:layout_width="match_parent"
