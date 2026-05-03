@@ -1,15 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+    navigation_drawer_menu.xml - Navigation Drawer Menu for TrackWise AI
+    
+    This menu appears in the side navigation drawer (hamburger menu).
+    It provides quick access to main app sections:
+    - Dashboard (home screen)
+    - Add Expense (create new expense)
+    - View Expenses (list/spending report)
+    
+    Each item has an icon and title for easy recognition.
+-->
+
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- ==================== DASHBOARD ==================== -->
+    <!-- Main home screen showing budget progress and recent transactions -->
     <item
         android:id="@+id/nav_dashboard"
         android:title="Dashboard"
         android:icon="@android:drawable/ic_menu_today" />
+
+    <!-- ==================== ADD EXPENSE ==================== -->
+    <!-- Opens form to add a new expense entry -->
     <item
         android:id="@+id/nav_add_expense"
         android:title="Add Expense"
         android:icon="@android:drawable/ic_menu_add" />
+
+    <!-- ==================== VIEW EXPENSES ==================== -->
+    <!-- Shows filtered list of expenses with date range selection -->
     <item
         android:id="@+id/nav_view_expenses"
         android:title="View Expenses"
         android:icon="@android:drawable/ic_menu_view" />
+
 </menu>
